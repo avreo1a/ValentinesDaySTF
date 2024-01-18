@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="valen.css">
+    <title>Can I be your valentine?</title>
+</head>
+<body>
+    <div class="content">
+        <h1>Dear Stefi Therese Fajardo</h1>
+        <img class="ILY" src="valen.gif">
+        <h2>Can I be your valentine?</h2>
+ 
+        <button class="Yes" type="yes" onclick="showHearts()">Yes!</button>
+        <button class="No" type="no" onclick="moveButton()">No!!!</button>
+    </div>
+
+    <script>
+        function moveButton() {
+            var button = document.querySelector('.No');
+            var maxWidth = window.innerWidth - button.clientWidth;
+            var maxHeight = window.innerHeight - button.clientHeight;
+
+            // Ensure the button stays within the visible area
+            var centerX = window.innerWidth / 2 - button.clientWidth / 2;
+            var newLeft = centerX + (Math.random() < 0.5 ? -1 : 1) * (Math.random() * maxWidth);
+            var newTop = Math.max(0, Math.min(maxHeight, Math.random() * maxHeight));
+
+            button.style.left = newLeft + 'px';
+            button.style.top = newTop + 'px';
+            button.disabled = false; // Enable the button for future clicks
+        }
+
+        function showHearts() {
+            var heartContainer = document.querySelector('.content');
+            var heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * (window.innerWidth - 20) + 'px';
+            heartContainer.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
